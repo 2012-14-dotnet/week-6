@@ -5,7 +5,7 @@
 const { SpecReporter, StacktraceOption } = require('jasmine-spec-reporter');
 const puppeteer = require('puppeteer');
 
-process.env.CHROME_BIN = puppeteer.executablePath();
+process.env.CHROMIUM_BIN = puppeteer.executablePath();
 
 /**
  * @type { import("protractor").Config }
@@ -16,7 +16,11 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    browserName: 'ChromeHeadless'
+    browserName: 'chrome',
+    chromeOptions: {
+      args: ['--disable-gpu', '--headless'],
+      binary: process.env.CHROMIUM_BIN,
+    }
   },
   directConnect: true,
   SELENIUM_PROMISE_MANAGER: false,
