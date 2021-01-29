@@ -1,11 +1,8 @@
 const userInput = document.querySelector('input');
 const formButton = document.querySelector('button');
+const salutationElement = document.createElement('p');
 
-formButton.addEventListener('click', buttonPush);
-
-let f = function buttonPush() { // function expression
-  const salutationElement = document.createElement('p');
-
+let buttonPush = function () { // function expression
   salutationElement.innerText = getSalutation(userInput.value);
   document.body.appendChild(salutationElement);
 }
@@ -24,3 +21,5 @@ function getSalutation(input) { // function statement
 
   return result;
 }
+
+formButton.addEventListener('click', buttonPush);
